@@ -1,6 +1,0 @@
-pinecone-client 
-pinecone-text 
-pinecone-notebooks
-langchain-community
-langchain-huggingface
-faster-whisper
