@@ -1,6 +1,7 @@
 ## End to End AI Agent with Voice Impersonation and Knowledge Base
 
-![Uploading Screenshot from 2024-07-25 12-36-09.png…]()
+
+![Screenshot from 2024-07-25 12-36-09](https://github.com/user-attachments/assets/5013b59c-8d31-4af5-b743-9d249ecfed11)
 
 
 Documentaton links:
