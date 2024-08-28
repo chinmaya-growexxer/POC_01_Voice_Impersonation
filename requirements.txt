@@ -1,0 +1,23 @@
+torch>=2.1.0  # required to install audiocraft
+librosa
+tqdm
+tiktoken==0.5.1
+audiocraft
+numpy
+ninja
+fastapi
+uvicorn
+tyro
+deepfilternet
+pydub
+gradio
+huggingface_hub
+pinecone-client
+pinecone-text
+pinecone-notebooks
+langchain-community
+langchain-huggingface
+#faster-whisper
+langchain_groq
+groq
+pyngrok
