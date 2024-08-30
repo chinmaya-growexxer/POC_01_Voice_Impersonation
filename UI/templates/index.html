@@ -1,0 +1,242 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Clone Context-Based AI Assistant</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .circle-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .audio {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            Voice Clone Context-Based AI Assistant
+        </div>
+        <img src="{{ url_for('static', filename='WebpVikas.jpg') }}" alt="Assistant Image" class="circle-img">
+
+        <form method="POST">
+            <label for="user_query">Enter User Query</label>
+            <input type="text" id="user_query" name="user_query" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if user_query %}
+        
+        <div class="result">
+            <p><strong>Asked:</strong> {{ user_query }}</p>
+            <div class="audio">
+                <audio controls>
+                    <source src="{{ url_for('static', filename=path) }}?{{ timestamp }}" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <p><strong>Response:</strong>{{ llm_response }}</p>
+        </div>
+        
+        {% endif %}
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Clone Context-Based AI Assistant</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .circle-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .audio {
+            margin-top: 10px;
+        }
+
+        #loading {
+            display: none;
+            font-size: 18px;
+            color: #007bff;
+        }
+    </style>
+    <script>
+        function showLoading() {
+            document.getElementById('result-container').innerHTML = '';  // Clear previous result
+            document.getElementById('loading').style.display = 'block'; // Show loading
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            Voice Clone Context-Based AI Assistant
+        </div>
+        <img src="{{ url_for('static', filename='WebpVikas.jpg') }}" alt="Assistant Image" class="circle-img">
+
+        <form method="POST" onsubmit="showLoading()">
+            <label for="user_query">Enter User Query</label>
+            <input type="text" id="user_query" name="user_query" required>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div id="loading">
+            Loading...
+        </div>
+
+        <div id="result-container" class="result">
+            {% if user_query %}
+            <p><strong>Asked:</strong> {{ user_query }}</p>
+            <div class="audio">
+                <audio controls>
+                    <source src="{{ url_for('static', filename=path) }}?{{ timestamp }}" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <p><strong>Response:</strong>{{ llm_response }}</p>
+            <p><strong>Overall Time Taken:</strong> {{ time_taken }} seconds</p>
+            <p><strong>Time Taken by PlayHT:</strong> {{ play_ht_time }} seconds</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
