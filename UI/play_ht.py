@@ -31,11 +31,12 @@ config.read('config.ini')
 api_config = config['api']
 pinecone_api_key = api_config['pinecone_api_key']
 groq_api_key = api_config['groq_api_key']
+playHT_user_id = api_config['playHT_user_id']
+playHT_api_key = api_config['playHT_api_key']
 
 # Required index
 index_name = "knowledge-base"
 llm_model = 'llama3-70b-8192'
-stt_model = 'whisper-large-v3'
 
 pc = Pinecone(api_key = pinecone_api_key)
 index = pc.Index(index_name)
@@ -123,8 +124,8 @@ def generate_llm_response(context, question, api_key, model_name):
 # Function to generate audio response for each chunk and then concate into single longer response
 def generate_wav_files(text):
   client = Client(
-    user_id = 'pe0vomeSkkY10fVHmGb92mi9qYT2',
-    api_key = '5dc0262d5ffe4fbeb12cc22914d1db4a',
+    user_id = playHT_user_id,
+    api_key = playHT_api_key,
   )
 
   options = TTSOptions(voice="s3://voice-cloning-zero-shot/b5b5fe11-17a8-4318-b353-3dee5d4829f7/original/manifest.json", sample_rate = 16000, format = Format.FORMAT_WAV, speed = 0.85, quality='QUALITY_PREMIUM')
